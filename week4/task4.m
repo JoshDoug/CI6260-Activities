@@ -15,7 +15,17 @@ for i=1:6
     line(xCoords, yCoords, zCoords); % Draw Cube
 end
 
+scaleUnit = [0.5 0 0 0; 0 0.5 0 0; 0 0 0.5 0; 0 0 0 1];
 
+scaledCube = cubeMatrix * scaleUnit;
+
+for i=1:6
+    xCoords = scaledCube([face(i,:) face(i,1)], 1); % Get X Coordinates for face i
+    yCoords = scaledCube([face(i,:) face(i,1)], 2); % Get Y Coordinates for face i
+    zCoords = scaledCube([face(i,:) face(i,1)], 3); % Get Z Coordinates for face i
+    hold on
+    line(xCoords, yCoords, zCoords); % Draw Cube
+end
 
 %line(cubeTest(:,1), cubeTest(:,2), cubeTest(:,3))
 view(-45, 45)
