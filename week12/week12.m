@@ -23,26 +23,16 @@ ftdisk = ftimg .* disk;
 iimg = ifft2(ftdisk);
 
 figure(1)
-subplot(2,2,1); imshow(img); title('Original Image');
-subplot(2,2,2); imshow(real(iimg)); title('Low Pass Image'); % Image with Low Pass filter applied
-subplot(2,2,3); imshow(real(ftdisk)); title('ftimg applied to disk');
-subplot(2,2,4); imshow(real(ifftshift(ftdisk))); title('inverse shift of ftdisk');
+subplot(2,1,1); imshow(img); title('Original Image');
+subplot(2,1,2); imshow(real(iimg)); title('Low Pass Image'); % Image with Low Pass filter applied
 
 % 2 - Apply a Gaussian filter, 15x15, sigma 3.0, in the spatial domain to an image
-
-h = fspecial('gaussian', [15, 15], 3.0);
-gimg = imfilter(img, h, 'replicate');
+gimg2 = imgaussfilt(img, 3, 'FilterSize', 15);
 
 figure(2)
-imshow(gimg);
+imshow(gimg2);
 
 % 3 - Same Gaussian filter applied in the frequency domain
-
-
-
-% 4
-
-
-
-
-
+fdimg2 = imgaussfilt(img, 3, 'FilterDomain', 'frequency');
+figure(3)
+imshow(fdimg2);
