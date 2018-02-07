@@ -1,3 +1,0 @@
-Image1RandomNoise.bmp filter=lfs diff=lfs merge=lfs -text
-Image2StructuralNoise.png filter=lfs diff=lfs merge=lfs -text
-*.jpg filter=lfs diff=lfs merge=lfs -text
